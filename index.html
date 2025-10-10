@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Printer Jam Jamming</title>
+</head>
+
+<body>
+    <main>
+        <button id="gcode-btn">get gcode</button>
+        <p><span id="points">0</span></p>
+        <p><table>
+            <thead>
+                <tr>
+                    <th>Timeline</th>
+                    <th>Progress</th>
+                    <th>Crossfade</th>
+                </tr>
+            </thead>
+            <tbody id="timeline-info">
+                <tr>
+                    <td id="timeline-name">--</td>
+                    <td id="timeline-progress">0</td>
+                    <td id="timeline-fadeout">0</td>
+                </tr>
+            </tbody>
+        </table></p>
+        <p>Timeline:<span id="timeline-progress">0</span></p>
+        <div id="info"></div>
+        <div id="viz"></div>
+    </main>
+    <script type="module" src="src/main-2025-10-13.js"></script>
+</body>
+
+</html>
