@@ -16,7 +16,10 @@ import {
 
 import { LivePrinter } from "liveprinter-core";
 import { makeVisualiser } from "vizlib";
-(async () => {
+
+document.addEventListener('onclick',
+async () => {
+  console.log("CLICK");
   const lp = new LivePrinter();
   const gcode = [];
 
@@ -67,7 +70,7 @@ import { makeVisualiser } from "vizlib";
   let presetPoly2 = presets.genPoly2({
     printer,
     sides,
-    circumference,
+    circumference,N
     cx,
     cy,
     minz,
@@ -236,4 +239,4 @@ import { makeVisualiser } from "vizlib";
 
     await printer.bail();
   });
-})();
+});
