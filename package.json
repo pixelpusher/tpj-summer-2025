@@ -9,12 +9,13 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "vite": "^8.0.3"
+    "vite": "^8.0.8"
   },
   "dependencies": {
     "gridlib": "github:pixelpusher/gridlib",
     "liveprinter-core": "github:pixelpusher/liveprinter-core",
-    "mathjs": "^15.1.1",
+    "lp-language": "github:pixelpusher/lp-language",
+    "mathjs": "^15.2.0",
     "tone": "^15.1.22",
     "vizlib": "github:pixelpusher/vizlib"
   }
