@@ -20,9 +20,8 @@ import { LivePrinter } from "liveprinter-core";
 import { makeVisualiser } from "vizlib";
 import { initSound } from "./sound.js";
 import { default as seq } from "./Sequence.js";
-import { test, parseStrudel as uzu } from "./strudel.js";
+import { parseStrudel as uzu } from "lp-language";
 
-test();
 
 function hms(ms) {
   const s = Math.floor(ms / 1000);
