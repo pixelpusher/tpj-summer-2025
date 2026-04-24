@@ -3,7 +3,7 @@ global notes = new seq('100hz', '200hz', '400hz', '600hz');
    
 # prime | fan 10 | mov2 x:lp.cx y:60 speed:50 z:0.13 | unretract | turnto 0 | fan 10
 
-global el = 0.35; // elevation
+global el = 0.35;
 global maxZ = 5;
 global ctr = 0;
 
