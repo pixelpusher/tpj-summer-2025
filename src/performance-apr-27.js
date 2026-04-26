@@ -43,7 +43,51 @@ lp.mainloop (async()=> {
   updateGUI();
  });
  
- 
+
+//
+//----------------------------- AMBIENT POWER LOOPS --------------------------
+//
+
+
+global lit = iterator( 
+  presets.makeTriLineTestSlower({
+    printer,
+    points: 16,
+    amt: 0.075, // was 0.15
+    note: "E2",
+    t: "4b",
+    beatHeight: "32b",
+    layerThick: 0.2,
+    minz: 0.13,
+    loop: true,
+    bpm: 120
+  })
+);
+
+lit.notes = ['f3', 'g3', 'c3', 'd3'];
+
+// e minor melodic-ish: e f# g a b c# d 
+
+lit.notes = ['g3','f#3','c#3', 'd3'];
+
+lit.notes = uzu('[e2!2 e3!2 e4!4]',1).map(v=>v[0]);
+
+lit.notes = ['f#4','g4', 'a5'];
+
+# interval '1/8b'
+
+global progListener = ({type, it, note}) => {
+  updateGUI();
+  info(`playing ${note}`);
+  if (it.done) {
+    info('AMBIENT POWER DEPLETED');
+  }
+};
+onProgress(progListener); 
+offProgress(progListener);
+lp.mainloop(async()=>step(lit));
+
+
 // 
 // ---------------------------- SHEPHARD'S SQUARE -------------------------------------
 //
@@ -173,12 +217,31 @@ setZoom(0.1);
 closeFactor(10);
 reset();
 
-global melody = new seq ("c3 c4 [c5 a4] [c4 a5] c3 c4 [g5 e4] [g4 a5]", 2);
+global melody = new seq ("c3 c4 a4 c3 c4 g5 e4 a5", 1);
 
 // C Mixolydian CDEFGAB♭C
-melody.set("[c5 e5 a5 e5 d5 e5 a5 bb5]",2);
+melody.set("[c5 e5 a5 e5 d5 e5 a5 bb5]",1);
 
-melody.set("[c5!3 e4]",1);
+melody.set("[c5 e5 a5 e5 d5 e5 a5 bb5]",1);
+
+// Fmin pent F - Ab - Bb - C - Eb
+melody.set('[f4 ab4 f4 bb4 ab4 c4 ab4 eb4]',1);
+
+melody.set('f4 ab4 f4 bb4 ab4 c4 ab4 eb4',1);
+
+melody.set('eb4 ab4 bb4 g4 db4 ab4 f4 eb4',1);
+
+melody.set('f4 ab4 db5 bb4 g4 e4 c4 bb3',1);
+
+melody.set('f4 - db5 bb4 - e4 c4 bb3',1);
+
+melody.set('f4 ab4 c4 bb4',1);
+
+console.log(melody)
+
+# thick 0.25 | down 0.05
+
+melody.set("[c5 e3]",0.5);
 
 // Define the L-System rules for a Hilbert Curve
 global hilbertAxiom = "L";
@@ -188,9 +251,9 @@ global hilbertRules = {
 };
 
 global hilbert2Rules = {
-  "L": "+RAF-LFAL-FAR+",
-  "R": "-LF+RAAAFR+FL-",
-  "A": "A"
+  "L": "+RFF-LFFL-FFR+",
+  "R": "-LF+RFFFFR+FL-",
+  "F": "F"
 };
 
 global angleMap = {
@@ -198,13 +261,19 @@ global angleMap = {
   "-": -90,
 };
 
+
 delay(true);
 
-global commandsIter = makeCommands(hilbertAxiom, hilbert2Rules, 5);
-  
-# bpm 125
+global commandsIter = makeCommands(hilbertAxiom, hilbert2Rules, 4);
 
-# mov2 x:lp.maxx*0.6 y:lp.maxy*0.4 z:0.2 speed:40 | turnto 45
+reset();
+
+setViewYmm(lp.cy*1.3)
+
+# bpm 125
+# mov2 x:lp.maxx*0.35 y:lp.maxy*0.25 z:0.2 speed:40
+
+# prime | mov2 x:lp.maxx*0.35 y:lp.maxy*0.25 z:0.2 speed:40 | turnto 90 | unretract
 
 lp.mainloop(async () => drawCommands({commandsIter, melody, angleMap}));
 
