@@ -180,6 +180,26 @@ melody.set("[c5 e5 a5 e5 d5 e5 a5 bb5]",2);
 
 melody.set("[c5!3 e4]",1);
 
+
+// C Mixolydian CDEFGAB♭C
+melody.set("[c5 e5 a5 e5 d5 e5 a5 bb5]",1);
+
+melody.set("[c5 e5 a5 e5 d5 e5 a5 bb5]",1);
+
+// Fmin pent F - Ab - Bb - C - Eb
+melody.set('[f4 ab4 f4 bb4 ab4 c4 ab4 eb4]',1);
+
+melody.set('f4 ab4 f4 bb4 ab4 c4 ab4 eb4',1);
+
+melody.set('eb4 ab4 bb4 g4 db4 ab4 f4 eb4',1);
+
+melody.set('f4 ab4 db5 bb4 g4 e4 c4 bb3',1);
+
+melody.set('f4 - db5 bb4 - e4 c4 bb3',1);
+
+melody.set('f4 ab4 c4 bb4',1);
+
+
 // Define the L-System rules for a Hilbert Curve
 global hilbertAxiom = "L";
 global hilbertRules = {
@@ -188,10 +208,11 @@ global hilbertRules = {
 };
 
 global hilbert2Rules = {
-  "L": "+RAF-LFAL-FAR+",
-  "R": "-LF+RAAAFR+FL-",
-  "A": "A"
+  "L": "+RFF-LFFL-FFR+",
+  "R": "-LF+RFFFFR+FL-",
+  "F": "F"
 };
+
 
 global angleMap = {
   "+": 90,
